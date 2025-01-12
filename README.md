@@ -18,8 +18,21 @@ A simple yet powerful text-to-speech application built with Python, featuring bo
 
 ## Prerequisites
 
-Before running the application, ensure you have Python 3.7+ installed. You'll need to install the following dependencies:
+Before running the application, ensure you have the following installed:
 
+1. Python 3.7+
+2. FFmpeg (required for audio processing)
+   - **Windows**: Download from [FFmpeg website](https://ffmpeg.org/download.html) and add to PATH
+   - **macOS**: Install via Homebrew: `brew install ffmpeg`
+   - **Linux**: Install via package manager:
+     ```bash
+     # Ubuntu/Debian
+     sudo apt-get update && sudo apt-get install ffmpeg
+     # Fedora
+     sudo dnf install ffmpeg
+     ```
+
+3. Python packages:
 ```bash
 pip install gradio
 pip install edge-tts
@@ -29,10 +42,15 @@ pip install asyncio
 
 ## Installation
 
-Clone this repository or download the source code:
+1. Clone this repository or download the source code:
 ```bash
 git clone <repository-url>
-cd tts-application
+cd TTS-App-with-Custom-Voices
+```
+
+2. Verify FFmpeg installation:
+```bash
+ffmpeg -version
 ```
 
 ## Usage
@@ -79,6 +97,7 @@ The application is built using the following components:
 - `gTTS`: Google's Text-to-Speech engine
 - `asyncio`: Handles asynchronous operations for Edge TTS
 - `tempfile`: Manages temporary audio file creation
+- `FFmpeg`: Handles audio processing and conversion
 
 ## Error Handling
 
@@ -87,10 +106,26 @@ The application includes error handling for:
 - Text-to-speech conversion failures
 - File system operations
 - Invalid voice/language selections
+- FFmpeg-related issues
+
+## Troubleshooting
+
+Common issues and solutions:
+
+1. **FFmpeg not found error**:
+   - Verify FFmpeg is installed: `ffmpeg -version`
+   - Check if FFmpeg is in your system PATH
+   - Try reinstalling FFmpeg
+
+2. **Audio conversion errors**:
+   - Ensure FFmpeg is properly installed
+   - Check system permissions for temp file creation
+   - Verify internet connection for TTS services
 
 ## Limitations
 
 - Internet connection required for both TTS engines
+- FFmpeg must be installed and accessible
 - Temporary files are created for audio storage
 - Voice options vary between engines
 - Audio quality depends on the selected engine and internet connection
